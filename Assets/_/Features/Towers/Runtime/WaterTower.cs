@@ -62,7 +62,7 @@ public class WaterTower : MonoBehaviour
     {
         if (_enemiesInAttackRange.Count > 0)
         {
-            _enemiesInAttackRange[0]
+            //_enemiesInAttackRange[0]
         }
     }
     private void TargetEnemy(EnemyBehavior enemy)
