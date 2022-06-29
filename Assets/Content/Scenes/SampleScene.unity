@@ -435,7 +435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &249822383
 Transform:
   m_ObjectHideFlags: 0
@@ -789,7 +789,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846846116}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66f00f4fce8989d4c9707b44ac3969f6, type: 3}
   m_Name: 
@@ -820,7 +820,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846846116}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0cf6f54e982e1b48af687377e8e0a5e, type: 3}
   m_Name: 
@@ -838,7 +838,7 @@ GameObject:
   - component: {fileID: 1100843360}
   - component: {fileID: 1100843359}
   - component: {fileID: 1100843358}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1325,6 +1325,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemyspawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280898991646736531, guid: 4b38bd7a09500b54790d6b0b8eda71d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b38bd7a09500b54790d6b0b8eda71d6, type: 3}

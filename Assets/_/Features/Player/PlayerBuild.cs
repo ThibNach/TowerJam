@@ -15,6 +15,7 @@ public class PlayerBuild : MonoBehaviour
     protected Vector3 positionHit;
     
     protected bool buildingModeEnable;
+    protected int layerGround;
 
     [SerializeField]
     protected Camera camera;
@@ -28,6 +29,11 @@ public class PlayerBuild : MonoBehaviour
         Vector2Int.right + Vector2Int.down,
         Vector2Int.down,
         Vector2Int.down + Vector2Int.left};
+
+    private void Start()
+    {
+        layerGround = LayerMask.NameToLayer("Ground");
+    }
     
     void Update()
     {
@@ -39,9 +45,10 @@ public class PlayerBuild : MonoBehaviour
 
         if(buildingModeEnable)
         {
-            if(Physics.Raycast(ray, out hit))
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerGround))
             {
                 distance = transform.position - hit.point;
+                Debug.Log(layerGround);
                 
                 if(TileIsNeirbhor(new Vector2Int((int)distance.x, (int)distance.z)))
                 {
