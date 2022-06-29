@@ -23,6 +23,12 @@ using UnityEngine;
             GameManager.AddEnemyToList(enemySpawned);
         }
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, .5f);
+        }
+
 
         #endregion
     }
