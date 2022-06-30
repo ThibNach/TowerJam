@@ -15,7 +15,7 @@ public class PlayerBuild : MonoBehaviour
     protected Vector3 positionHit;
     public float wheel;
     
-    protected bool buildingModeEnable;
+    public bool buildingModeEnable;
     protected int layerGround;
 
     [SerializeField]

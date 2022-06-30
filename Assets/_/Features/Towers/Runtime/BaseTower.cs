@@ -42,21 +42,22 @@ public abstract class BaseTower : MonoBehaviour
     public virtual void Awake()
     {
         InitAttackRange();
+        _currentHP = _maxHP;
     }
     public virtual void Update()
     {
+        ManageAggroList();
         _timer += Time.deltaTime;
         if (_timer > m_FireRate) LaunchBullet();
-        _currentHP = _maxHP;
+      
     }
     public virtual void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<EnemyBehavior>()) TargetEnemy(other.gameObject.GetComponent<EnemyBehavior>());
-
+        if (other.gameObject.GetComponent<EnemyBehavior>() && !other.isTrigger) TargetEnemy(other.gameObject.GetComponent<EnemyBehavior>());
     }
     public virtual void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<EnemyBehavior>()) LeaveTarget(other.gameObject.GetComponent<EnemyBehavior>());
+        if (other.gameObject.GetComponent<EnemyBehavior>() && !other.isTrigger) LeaveTarget(other.gameObject.GetComponent<EnemyBehavior>());
     }
 
     #endregion
@@ -82,7 +83,11 @@ public abstract class BaseTower : MonoBehaviour
     }
     protected virtual void TargetEnemy(EnemyBehavior enemy) => m_enemiesInAttackRange.Add(enemy);
     protected virtual void LeaveTarget(EnemyBehavior enemy) => m_enemiesInAttackRange.Remove(enemy);
-    public virtual void TowerTakeDamage(float damage) => _currentHP -= damage;
+    public virtual void TowerTakeDamage(float damage) 
+    { 
+        _currentHP -= damage;
+        if (_currentHP < 0) TowerDie();
+    }
     protected virtual void InitAttackRange()
     {
         _aggroSphere = this.gameObject.AddComponent<SphereCollider>();
@@ -90,6 +95,26 @@ public abstract class BaseTower : MonoBehaviour
         _aggroSphere.radius = _detectionRange;
         _aggroSphere.center = Vector3.zero;
     }
+    protected virtual void ManageAggroList()
+    {
+        if (m_enemiesInAttackRange.Count > 0)
+        {
+            for (int i = 0; i < m_enemiesInAttackRange.Count; i++)
+            {
+                if (m_enemiesInAttackRange[i] == null) m_enemiesInAttackRange.RemoveAt(i);
+            }
+        }
+    }
+    private void TowerDie()
+    {
+        DropRessources();
+        Destroy(this.gameObject);
+    }
+    private void DropRessources()
+    {
+
+    }
+
     #endregion
 
 
