@@ -53,6 +53,7 @@ public class PlayerBuild : MonoBehaviour
                     
                     if(Input.GetMouseButtonDown(0))
                     {
+                        //RessourcesManager.Instance.HaveEnoughtResBuild()
                         BuildingManager.Instance.AddBuildOnTile(previewPositionGrid);
                     }
                 }
@@ -100,9 +101,9 @@ public class PlayerBuild : MonoBehaviour
     {
         if(buildingModeEnable)
         {
-            for (int i = -10; i < 10; i++)
+            for (int i = -1; i < 2; i++)
             {
-                for (int j = -10; j < 10; j++)
+                for (int j = -1; j < 2; j++)
                 {
                     Gizmos.color = new Color(1,1,0, .05f);
                     Gizmos.DrawCube(new Vector3(i, 0, j), new Vector3(1,.1f,1));
