@@ -5,13 +5,15 @@ using UnityEngine;
 public class BuildingManager : MonoBehaviour
 {
     Dictionary<Vector2Int, GameObject> tiles = new Dictionary<Vector2Int, GameObject>();
-    public GameObject build;
+    public GameObject[] builds;
+    public GameObject currentBuild;
 
     public static BuildingManager Instance;
 
     private void Start()
     {
         Instance = this;
+        currentBuild = builds[0];
     }
 
     public bool AddBuildOnTile(Vector2Int tilePosition)
@@ -20,9 +22,9 @@ public class BuildingManager : MonoBehaviour
 
         if(!exist)
         {
-            tiles.Add(tilePosition, build);
+            tiles.Add(tilePosition, currentBuild);
             
-            Instantiate(build, new Vector3(tilePosition.x, 0, tilePosition.y), Quaternion.identity);
+            Instantiate(currentBuild, new Vector3(tilePosition.x, 0, tilePosition.y), Quaternion.identity);
         }
         
         return !exist;
