@@ -33,6 +33,7 @@ public class Tile : MonoBehaviour
                 instance.transform.position += new Vector3(Random.Range(-lp, lp), 0, Random.Range(-lp, lp));
                 instance.transform.rotation = Quaternion.Euler(Random.Range(-25,25), Random.Range(0,360), Random.Range(-25,25));
                 instance.transform.localScale = new Vector3(Random.Range(1, 1.5f), Random.Range(1, 1.5f), Random.Range(1, 1.5f));
+                prefabTree.GetComponent<Ressource>().quantityRessource = Random.Range(5, 10);
             }
 
             countRessource = Random.Range(0, 4);
@@ -43,6 +44,7 @@ public class Tile : MonoBehaviour
                 instance.transform.position += new Vector3(Random.Range(-lp, lp), 0, Random.Range(-lp, lp));
                 instance.transform.rotation = Quaternion.Euler(Random.Range(-25,25), Random.Range(0,360), Random.Range(-25,25));
                 instance.transform.localScale = new Vector3(Random.Range(1, 1.5f), Random.Range(1, 1.5f), Random.Range(1, 1.5f));
+                prefabStone.GetComponent<Ressource>().quantityRessource = Random.Range(5, 10);
             }
         }
     }

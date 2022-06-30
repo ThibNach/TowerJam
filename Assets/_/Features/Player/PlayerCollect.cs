@@ -3,13 +3,13 @@ using UnityEngine;
 public class PlayerCollect : MonoBehaviour
 {
     [SerializeField]
-    protected float currentTime;
-    public float timeout;
-    public bool enableTimeout;
-    [SerializeField]
     protected Camera camera;
     [SerializeField]
     protected float distanceGather;
+    [SerializeField]
+    protected float currentTime;
+    public float durationPick;
+    protected bool enableTimeout;
 
     private void Update()
     {
@@ -17,9 +17,10 @@ public class PlayerCollect : MonoBehaviour
 
         if(enableTimeout)
         {
-            if(currentTime > timeout)
+            if(currentTime > durationPick)
             {
                 currentTime = 0;
+                enableTimeout = false;
             }
             else
             {
@@ -60,5 +61,12 @@ public class PlayerCollect : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, distanceGather);
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
     }
 }

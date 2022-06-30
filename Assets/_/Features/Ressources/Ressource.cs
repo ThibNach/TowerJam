@@ -4,18 +4,18 @@ public class Ressource : MonoBehaviour
 {
     [SerializeField]
     public RessourceData data;
-    public float valueRessource;
+    public float quantityRessource;
     public float valuePick;
 
     public float PickRessource()
     {
-        valueRessource -= valuePick;
+        quantityRessource -= valuePick;
         return valuePick;
     }
 
     private void Update()
     {
-        if(valueRessource <= 0)
+        if(quantityRessource <= 0)
         {
             DestroyRessource();
         }

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4340403831528450225}
   - component: {fileID: 7826115084284971119}
   - component: {fileID: 4746734966049705074}
+  - component: {fileID: 888838046050882329}
   m_Layer: 0
   m_Name: Tree
-  m_TagString: Untagged
+  m_TagString: Gatherable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +78,21 @@ CapsuleCollider:
   m_Height: 0.21324873
   m_Direction: 1
   m_Center: {x: 0.059006795, y: 0.52807033, z: -0.03}
+--- !u!114 &888838046050882329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5509161018368795543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0484f37b507d5b04b9e48bea571d7d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: e4ad0f181d6d2eb438d9f8f6e49a2eee, type: 2}
+  valueRessource: 0
+  valuePick: 1
 --- !u!1001 &3543358986921556327
 PrefabInstance:
   m_ObjectHideFlags: 0
