@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+[System.Serializable]
 public class EnemyBehavior : MonoBehaviour
 {
     #region Exposed
@@ -10,8 +11,7 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Enemy Behaviour")]
     [SerializeField]
     private float _MaxHP;
-    [SerializeField]
-    private float _enemySpeed;
+    public float _enemySpeed;
     [Space(5)]
     [Header("Damages")]
     [SerializeField]
@@ -35,6 +35,9 @@ public class EnemyBehavior : MonoBehaviour
     private void Awake()
     {
         InitAggroSphere();
+        _damageModifier = 1;
+        m_speedAtStart = _enemySpeed;
+        _currentHP = _MaxHP;
     }
     private void Update()
     {
@@ -44,16 +47,14 @@ public class EnemyBehavior : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Tower")) _aggroList.Add(other.gameObject.transform);
-
-
+        if (other.gameObject.CompareTag("Player") || other.GetComponent<BaseTower>()) _aggroList.Add(other.gameObject.transform);
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Tower"))
-        {
-            _aggroList.Remove(other.gameObject.transform);
-        }
+        //if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Tower"))
+        //{
+        //    _aggroList.Remove(other.gameObject.transform);
+        //}
     }
 
     #endregion
@@ -61,12 +62,36 @@ public class EnemyBehavior : MonoBehaviour
 
     #region Main
 
-    public IEnumerator ModifieMoveSpeed(float modifier,float time)
+    private void EnemyMakeDamageToTower(BaseTower target)
     {
-        float initialspeed = _enemySpeed;
-        _enemySpeed /= modifier;
+        target.TowerTakeDamage(_damagesToBase);
+    }
+    public void EnemyTakeDamage(float damage) => _currentHP -= damage;   
+    public void StartDebuffDamage(float modifier,float time)
+    {
+        StartCoroutine(ModifieDamages(modifier, time));
+    }
+    private  IEnumerator ModifieDamages(float modifier, float time)
+    {
+        if (_damageModifier == 1)
+        {
+            _damageModifier *= modifier;
+        }
         yield return new WaitForSeconds(time);
-        _enemySpeed = initialspeed;
+        _damageModifier = 1;
+    }
+    public void StartDebuffSpeed(float modifier, float time)
+    {
+        StartCoroutine(ModifieSpeed(modifier, time));
+    }
+    private IEnumerator ModifieSpeed(float modifier, float time)
+    {
+        if (_enemySpeed == m_speedAtStart)
+        {
+            _enemySpeed /= modifier;
+        }
+        yield return new WaitForSeconds(time);
+        _enemySpeed = m_speedAtStart;
     }
     private void CheckPath()
     {
@@ -95,6 +120,10 @@ public class EnemyBehavior : MonoBehaviour
     private List<Transform> _aggroList = new List<Transform>();
     private SphereCollider _aggroCollider;
     private List<Transform> _pathCheckPoints;
+    [HideInInspector]
+    public float _damageModifier;
+    [HideInInspector]
+    public float m_speedAtStart;
 
     #endregion
 }
