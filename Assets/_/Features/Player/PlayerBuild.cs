@@ -13,6 +13,7 @@ public class PlayerBuild : MonoBehaviour
 
     protected Vector3 position;
     protected Vector3 positionHit;
+    public float wheel;
     
     protected bool buildingModeEnable;
     protected int layerGround;
@@ -45,10 +46,9 @@ public class PlayerBuild : MonoBehaviour
 
         if(buildingModeEnable)
         {
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity, layerGround))
+            if(Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 distance = transform.position - hit.point;
-                Debug.Log(layerGround);
                 
                 if(TileIsNeirbhor(new Vector2Int((int)distance.x, (int)distance.z)))
                 {
@@ -61,23 +61,23 @@ public class PlayerBuild : MonoBehaviour
                     position.z = Mathf.Floor(position.z);
                     tilePreview.transform.position = position;
 
-                    Debug.Log(Input.GetMouseButtonDown(0));
-
                     if(Input.GetMouseButtonDown(0))
                     {
-                        BuildingManager.Instance.AddBuildOnTile(new Vector2Int((int)position.x, (int)position.z));
+                        //BuildingManager.Instance.AddBuildOnTile(new Vector2Int((int)position.x, (int)position.z));
                     }
                 }
             }
-        }
 
+            
+        }
+        wheel = Input.GetAxis("Mouse ScrollWheel");
         tilePreview.active = buildingModeEnable;
     }
 
     protected bool TileIsNeirbhor(Vector2Int distance)
     {
-        Debug.Log(distance);
-        Debug.Log(neighbor);
+        // Debug.Log(distance);
+        // Debug.Log(neighbor);
         return neighbor.ToList<Vector2Int>().Contains(distance);
     }
 
