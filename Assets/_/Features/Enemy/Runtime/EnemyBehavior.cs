@@ -163,7 +163,11 @@ public class EnemyBehavior : MonoBehaviour
 
 
     #region Utils
-    private void EnemyIsDead() => Destroy(gameObject);
+    private void EnemyIsDead()
+    {
+        GameManager.RemoveEnemyToList(this);
+        Destroy(gameObject);
+    }
     private void ManageAggroList()
     {
         if (_aggroList.Count > 0)
