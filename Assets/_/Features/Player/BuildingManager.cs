@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-    Dictionary<Vector2Int, GameObject> tiles = new Dictionary<Vector2Int, GameObject>();
-    public GameObject[] builds;
+    Dictionary<Vector2Int, AbstractStructure> tiles = new Dictionary<Vector2Int, AbstractStructure>();
+    public AbstractStructure[] builds;
     public GameObject[] previewBuilds;
     public int indexCurrentBuild;
     public static BuildingManager Instance;
@@ -48,7 +48,7 @@ public class BuildingManager : MonoBehaviour
         currentPreviewBuild.transform.position = new Vector3(position.x, 0, position.y);
     }
 
-    public GameObject currentBuild
+    public AbstractStructure currentBuild
     {
         get
         {

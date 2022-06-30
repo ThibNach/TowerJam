@@ -25,8 +25,8 @@ public class RessourcesManager : MonoBehaviour
         ressourceB.value += value;
     }
 
-    public bool HaveEnoughtResBuild(int valueResA, int valueResB)
+    public bool HaveEnoughtResBuild(AbstractStructure structure)
     {
-        return valueResA <= ressourceA.value && valueResB <= ressourceB.value;
+        return structure.costRessourceA <= ressourceA.value && structure.costRessourceB <= ressourceB.value;
     }
 }

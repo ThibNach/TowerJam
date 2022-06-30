@@ -53,8 +53,10 @@ public class PlayerBuild : MonoBehaviour
                     
                     if(Input.GetMouseButtonDown(0))
                     {
-                        //RessourcesManager.Instance.HaveEnoughtResBuild()
-                        BuildingManager.Instance.AddBuildOnTile(previewPositionGrid);
+                        if(RessourcesManager.Instance.HaveEnoughtResBuild(BuildingManager.Instance.currentBuild))
+                        {
+                            BuildingManager.Instance.AddBuildOnTile(previewPositionGrid);
+                        }
                     }
                 }
             }
@@ -105,11 +107,14 @@ public class PlayerBuild : MonoBehaviour
             {
                 for (int j = -1; j < 2; j++)
                 {
-                    Gizmos.color = new Color(1,1,0, .05f);
-                    Gizmos.DrawCube(new Vector3(i, 0, j), new Vector3(1,.1f,1));
-                    Gizmos.DrawWireCube(new Vector3(i, 0, j), new Vector3(1,.1f,1));
-                    Gizmos.color = new Color(1,0,0, .5f);
-                    Gizmos.DrawSphere(new Vector3(i, 0, j), .05f);
+                    if(i != 0 || j != 0)
+                    {
+                        Gizmos.color = new Color(.2f, .7f, 0, .5f);
+                        Gizmos.DrawCube(new Vector3(playerPositionGrid.x+i, 0, playerPositionGrid.y+j), new Vector3(1,.1f,1));
+                        Gizmos.DrawWireCube(new Vector3(playerPositionGrid.x+i, 0, playerPositionGrid.y+j), new Vector3(1,.1f,1));
+                        Gizmos.color = new Color(1,0,0, .5f);
+                        //Gizmos.DrawSphere(new Vector3(playerPositionGrid.x+i, 0, playerPositionGrid.y+j), .05f);
+                    }
                 }
             }
         }

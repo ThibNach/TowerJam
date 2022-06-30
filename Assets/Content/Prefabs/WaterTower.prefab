@@ -210,6 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621d57cfc89cce84fb76dd0e39570ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  costRessourceA: 10
+  costRessourceB: 20
   _maxHP: 0
   _detectionRange: 0
   _buildingTime: 0
