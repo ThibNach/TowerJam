@@ -5,17 +5,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     protected string forwardKey;
-    [SerializeField]
-    protected float speed;
+    public float speed;
     
     [SerializeField]
     protected Rect areaMoving;
     public Vector3 position;
+    [HideInInspector]
+    public float m_speedAtStart;
 
+    private void Awake()
+    {
+        m_speedAtStart = speed;
+    }
     private void Update()
     {
         MovePlayer();
         ClampPositionInArea();
+        
     }
 
     protected void MovePlayer()
@@ -36,5 +42,16 @@ public class PlayerController : MonoBehaviour
         position.x = Mathf.Clamp(position.x, areaMoving.x, areaMoving.width);
         position.z = Mathf.Clamp(position.z, areaMoving.y, areaMoving.height);
         transform.position = position;
+    }
+
+    public void StartSpeedBuff(float modifier,float timeafterleave)
+    {
+        StartCoroutine(SpeedBuff(modifier, timeafterleave));
+    }
+    private IEnumerator SpeedBuff(float modifier, float timeafterleave)
+    {
+        speed *= modifier;
+        yield return new WaitForSeconds(timeafterleave);
+        speed = m_speedAtStart;
     }
 }

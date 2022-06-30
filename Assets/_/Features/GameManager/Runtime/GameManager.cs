@@ -11,10 +11,15 @@ public class GameManager : MonoBehaviour
     private List<EnemySpawn> _enemySpawns = new List<EnemySpawn>();
     [SerializeField]
     private List<WaveObject> _firstWaveSetUp = new List<WaveObject>();
-    [SerializeField]
-    private static float _waveModifier;
+    [Space(5)]
+
+    [Header("Wave Values")]
     [SerializeField]
     private float _breakTimeBetweenWaves;
+    [SerializeField]
+    private float _waveModifier;
+    public float m_enemyHPAddByWave;
+    
 
     #endregion
 
@@ -23,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        m_waveNumber = 1;
         _timers = new float[_firstWaveSetUp.Count];
         _nbSpawned = new int[_firstWaveSetUp.Count];
         InitArrays();
@@ -30,13 +36,18 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (_isInBreakPhase)
+        {
             _breakPhaseTimer += Time.deltaTime;
+            CheckEndOfBreak();
+        }
+
         else
+        {
             _waveTimer += Time.deltaTime;
-        IncrementArrayWithTime(_timers);
-        HandleEnemySpawn();
-        CheckForEndOfWave();
-        CheckEndOfBreak();
+            IncrementArrayWithTime(_timers);
+            HandleEnemySpawn();
+            CheckForEndOfWave();
+        }         
     }
 
     #endregion
@@ -48,20 +59,18 @@ public class GameManager : MonoBehaviour
         InitArrays();
         m_waveNumber++;
         _waveTimer = 0;
-        _isInBreakPhase = false;
-        
+        _isInBreakPhase = false;        
     }
     private void CheckEndOfBreak()
     {
         if(_breakPhaseTimer > _breakTimeBetweenWaves)
         {
-            StartNewWave();
-            
+            StartNewWave();            
         }
     }
     private void CheckForEndOfWave()
     {
-        if (_waveTimer > 15f && _livingEnemies.Count >0)
+        if (_waveTimer > 15f && _livingEnemies.Count == 0)
         {
             StartNewBreakPhase();
         }
@@ -80,7 +89,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < _firstWaveSetUp.Count; i++)
         {
-            if (_firstWaveSetUp[i].m_enemyType != null && _firstWaveSetUp[i].m_nbSpawn > _nbSpawned[i]*GetWaveModifier(m_waveNumber) && _firstWaveSetUp[i].m_cdSpawn < _timers[i])
+            if (_firstWaveSetUp[i].m_enemyType != null && _firstWaveSetUp[i].m_nbSpawn*GetWaveModifier() > _nbSpawned[i] && _firstWaveSetUp[i].m_cdSpawn < _timers[i])
             {
                if (GetWaveNumber() > _enemySpawns.Count) _enemySpawns[Random.Range(0, _enemySpawns.Count)].SpawnEnemy(_firstWaveSetUp[i].m_enemyType);
                else _enemySpawns[Random.Range(0, GetWaveNumber())].SpawnEnemy(_firstWaveSetUp[i].m_enemyType);
@@ -116,13 +125,13 @@ public class GameManager : MonoBehaviour
             array[i] += Time.deltaTime;
         }
     }
-    public static void AddEnemyToList(EnemyBehavior enemy) => _livingEnemies.Add(enemy);  
-    public static void RemoveEnemyToList(EnemyBehavior enemy) => _livingEnemies.Remove(enemy);
-    private static float GetWaveModifier(int nbwave)
+    public void AddEnemyToList(EnemyBehavior enemy) => _livingEnemies.Add(enemy);  
+    public void RemoveEnemyToList(EnemyBehavior enemy) => _livingEnemies.Remove(enemy);
+    public float GetWaveModifier()
     {
-        return nbwave*_waveModifier;
+        return m_waveNumber * _waveModifier;
     }
-    private static int GetWaveNumber()
+    private  int GetWaveNumber()
     {
         return m_waveNumber;
     }
@@ -133,9 +142,9 @@ public class GameManager : MonoBehaviour
 
     private float[] _timers;
     private int[] _nbSpawned;
-    public static List<EnemyBehavior> _livingEnemies = new List<EnemyBehavior>();
+    public List<EnemyBehavior> _livingEnemies = new List<EnemyBehavior>();
     [HideInInspector]
-    public static int m_waveNumber;
+    public  int m_waveNumber;
     private float _waveTimer;
     private float _breakPhaseTimer;
     private bool _isInBreakPhase;

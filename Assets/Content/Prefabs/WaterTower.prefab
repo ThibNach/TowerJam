@@ -119,17 +119,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costRessourceA: 10
   costRessourceB: 20
-  _maxHP: 0
-  _detectionRange: 0
+  _maxHP: 10000
+  _detectionRange: 5
   _buildingTime: 0
   _upgradeTime: 0
   _woodBuildingCost: 0
   _stoneBuildingCost: 0
-  m_bulletSize: 0
-  m_FireRate: 0
+  m_bulletSize: 0.2
+  m_FireRate: 2
   m_damageModifier: 0
   m_modifierTime: 0
-  m_bulletSpeed: 0
+  m_bulletSpeed: 0.2
   _bulletPrefab: {fileID: 3363477944066730690, guid: 72631c86a6c1a6d45879f60f0f642b53,
     type: 3}
   m_enemiesInAttackRange: []
@@ -234,6 +234,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a2d49b5943cccc4b8ee0945df4b638c, type: 3}
+--- !u!1 &432561959489543061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -376789436909975469, guid: 1a2d49b5943cccc4b8ee0945df4b638c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8990773442553058246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1772588521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432561959489543061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68115ea736b91424f9bc8cfe0d607375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canonType: 1
+--- !u!1 &5239536200643980713 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3779424597146549871, guid: 1a2d49b5943cccc4b8ee0945df4b638c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8990773442553058246}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8834419942131957862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5239536200643980713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68115ea736b91424f9bc8cfe0d607375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canonType: 0
 --- !u!4 &8885353244157113389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1a2d49b5943cccc4b8ee0945df4b638c,
