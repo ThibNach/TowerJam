@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterTower : BaseTower
+public class SlowTower : BaseTower
 {
- 
+    
 }
