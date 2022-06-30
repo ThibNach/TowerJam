@@ -10,7 +10,7 @@ public class PlayerBuild : MonoBehaviour
     protected Vector2Int previewPositionGrid;
     public Vector2Int playerPositionGrid;
     public Vector2Int distancePreview;
-    protected bool buildingModeEnable;
+    public bool buildingModeEnable;
     protected int layerGround;
     public bool canBuild;
 

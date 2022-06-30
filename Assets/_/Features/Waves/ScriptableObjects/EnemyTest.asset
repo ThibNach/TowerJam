@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4d52a2b3b65e843a130481fd862ce9, type: 3}
   m_Name: EnemyTest
   m_EditorClassIdentifier: 
-  m_enemyType: {fileID: 7768725659652564740, guid: abe999034e54a05469f884e6482bc211, type: 3}
-  m_nbSpawn: 10
+  m_enemyType: {fileID: 7768725659652564740, guid: abe999034e54a05469f884e6482bc211,
+    type: 3}
+  m_nbSpawn: 1
   m_cdSpawn: 3

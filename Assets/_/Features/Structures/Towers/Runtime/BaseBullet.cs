@@ -18,7 +18,7 @@ public abstract class BaseBullet : MonoBehaviour
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<EnemyBehavior>())
+        if (other.GetComponent<EnemyBehavior>() && !other.isTrigger)
         {
             EnemyBehavior enemy = other.GetComponent<EnemyBehavior>();
             ApplyDebuff(enemy);
