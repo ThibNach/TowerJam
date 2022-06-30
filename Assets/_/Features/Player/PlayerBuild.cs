@@ -12,7 +12,6 @@ public class PlayerBuild : MonoBehaviour
     public Vector2Int distancePreview;
     public bool buildingModeEnable;
     protected int layerGround;
-    public bool canBuild;
 
     [SerializeField]
     protected Camera camera;
@@ -55,7 +54,14 @@ public class PlayerBuild : MonoBehaviour
                     {
                         if(RessourcesManager.Instance.HaveEnoughtResBuild(BuildingManager.Instance.currentBuild))
                         {
+                            RessourcesManager.Instance.IncreaseRessourceA(-BuildingManager.Instance.currentBuild.costRessourceA);
+                            RessourcesManager.Instance.IncreaseRessourceB(-BuildingManager.Instance.currentBuild.costRessourceB);
                             BuildingManager.Instance.AddBuildOnTile(previewPositionGrid);
+                            Debug.Log("Turret create");
+                        }
+                        else
+                        {
+                            Debug.Log("Enought Ressource for create Turret");
                         }
                     }
                 }

@@ -6,27 +6,32 @@ public class RessourcesManager : MonoBehaviour
 {
     [SerializeField]
     protected RessourceData ressourceA;
+    [SerializeField]
     protected RessourceData ressourceB;
+    protected float valueRessourceA;
+    protected float valueRessourceB;
 
     public static RessourcesManager Instance;
 
     private void Start()
     {
         Instance = this;
+        valueRessourceA = ressourceA.defaultValue;
+        valueRessourceB = ressourceB.defaultValue;
     }
 
     public void IncreaseRessourceA(float value)
     {
-        ressourceA.value += value;
+        valueRessourceA += value;
     }
 
     public void IncreaseRessourceB(float value)
     {
-        ressourceB.value += value;
+        valueRessourceB += value;
     }
 
     public bool HaveEnoughtResBuild(AbstractStructure structure)
     {
-        return structure.costRessourceA <= ressourceA.value && structure.costRessourceB <= ressourceB.value;
+        return structure.costRessourceA <= valueRessourceA && structure.costRessourceB <= valueRessourceB;
     }
 }

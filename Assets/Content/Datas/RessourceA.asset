@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed00cf69e3ffb14aa2906fa655c3816, type: 3}
   m_Name: RessourceA
   m_EditorClassIdentifier: 
-  name: 
+  name: wood
   prefabs: {fileID: 0}
   icon: {fileID: 0}
+  defaultValue: 100

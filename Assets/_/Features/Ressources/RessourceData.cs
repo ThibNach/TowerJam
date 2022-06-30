@@ -8,5 +8,5 @@ public class RessourceData : ScriptableObject
     public string name;
     public GameObject prefabs;
     public Sprite icon;
-    public float value;
+    public float defaultValue;
 }
