@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-    Dictionary<Vector2Int, AbstractStructure> tiles = new Dictionary<Vector2Int, AbstractStructure>();
+    Dictionary<Vector2Int, GameObject> tiles = new Dictionary<Vector2Int, GameObject>();
     public AbstractStructure[] builds;
     public GameObject[] previewBuilds;
     public int indexCurrentBuild;
     public static BuildingManager Instance;
 
-    private void Start()
+    private void Awake()
     {
         Instance = this;
     }
@@ -21,11 +21,22 @@ public class BuildingManager : MonoBehaviour
 
         if(!exist)
         {
-            tiles.Add(tilePosition, currentBuild);
-            
+            tiles.Add(tilePosition, currentBuild.gameObject);
             Instantiate(currentBuild, new Vector3(tilePosition.x, 0, tilePosition.y), Quaternion.identity);
         }
         
+        return !exist;
+    }
+
+    public bool AddTile(Vector2Int tilePosition, GameObject tile)
+    {
+        bool exist = tiles.ContainsKey(tilePosition);
+
+        if(!exist)
+        {
+            tiles.Add(tilePosition, tile.gameObject);
+        }
+
         return !exist;
     }
 

@@ -68,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
             _attackDirection = (hit.point - transform.position);
 
         }
-        transform.LookAt(new Vector3(_attackDirection.x, transform.position.y, _attackDirection.z));
+        playerGraphic.transform.LookAt(new Vector3(_attackDirection.x, transform.position.y, _attackDirection.z));
         if (_enemyInAttackRange.Count > 0)
         {
             foreach (EnemyBehavior enemy in _enemyInAttackRange)
@@ -106,6 +106,8 @@ public class PlayerAttack : MonoBehaviour
     private List<EnemyBehavior> _enemyInAttackRange = new List<EnemyBehavior>();
     private float _timerCoolDown;
     private PlayerBuild _playerBuild;
+    [SerializeField]
+    protected GameObject playerGraphic;
 
     #endregion
 }

@@ -40,8 +40,11 @@ public class EnemyBehavior : MonoBehaviour
     {
         InitAggroSphere();
         _damageModifier = 1;
-        m_speedAtStart = _enemySpeed;
-        _currentHP = _MaxHP;
+        m_speedAtStart = _enemySpeed;       
+    }
+    private void Start()
+    {
+        _currentHP = _MaxHP + m_gameManager.m_enemyHPAddByWave;
     }
     private void Update()
     {
@@ -163,7 +166,11 @@ public class EnemyBehavior : MonoBehaviour
 
 
     #region Utils
-    private void EnemyIsDead() => Destroy(gameObject);
+    private void EnemyIsDead()
+    {
+        m_gameManager.RemoveEnemyToList(this);
+        Destroy(gameObject);
+    }
     private void ManageAggroList()
     {
         if (_aggroList.Count > 0)
@@ -181,7 +188,6 @@ public class EnemyBehavior : MonoBehaviour
     #region Private
 
     private float _currentHP;
-    private Vector3 _LastPositionInPath;
     private List<Transform> _aggroList = new List<Transform>();
     private SphereCollider _aggroCollider;
     private List<Transform> _pathCheckPoints;
@@ -192,6 +198,8 @@ public class EnemyBehavior : MonoBehaviour
     private RaycastHit _hit;
     private bool _isAttacking;
     private float _timerAttackCoolDown;
+    [HideInInspector]
+    public GameManager m_gameManager;
 
     #endregion
 }

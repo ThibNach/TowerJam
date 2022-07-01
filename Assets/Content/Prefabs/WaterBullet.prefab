@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5404195829166895300}
   - component: {fileID: 3363477944066730690}
+  - component: {fileID: -3212659991008647595}
   m_Layer: 0
   m_Name: WaterBullet
   m_TagString: Untagged
@@ -128,7 +129,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7124178114200831671}
-  - {fileID: 6396222798875190846}
+  - {fileID: 2486589548524212002}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -144,7 +145,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f2391dd722f27499b5463c9740a3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &6866102404732453333
+--- !u!135 &-3212659991008647595
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8990348630750413349}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &2668555919738104009
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -218,9 +232,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edea9358901cfe24baca0654eea173d3, type: 3}
---- !u!4 &6396222798875190846 stripped
+--- !u!4 &2486589548524212002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: edea9358901cfe24baca0654eea173d3,
     type: 3}
-  m_PrefabInstance: {fileID: 6866102404732453333}
+  m_PrefabInstance: {fileID: 2668555919738104009}
   m_PrefabAsset: {fileID: 0}
