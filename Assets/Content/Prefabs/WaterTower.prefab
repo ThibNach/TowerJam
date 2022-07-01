@@ -129,7 +129,7 @@ MonoBehaviour:
   m_FireRate: 1
   m_damageModifier: 2
   m_modifierTime: 5
-  m_bulletSpeed: 3
+  m_bulletSpeed: 5
   _bulletPrefab: {fileID: 3363477944066730690, guid: 72631c86a6c1a6d45879f60f0f642b53,
     type: 3}
   m_enemiesInAttackRange: []
