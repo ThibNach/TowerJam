@@ -312,11 +312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7680ec2550acc9c4abdee3240c26dc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MaxHP: 50
-  _enemySpeed: 5
-  _damagesToPlayer: 5
-  _damagesToTower: 5
-  _damagesToBase: 0
+  _MaxHP: 1
+  _enemySpeed: 3
+  _damagesToPlayer: 1
+  _damagesToTower: 2
+  _damagesToBase: 2
   _attackCoolDown: 2
   _attackRange: 1.5
   _aggroRadius: 5

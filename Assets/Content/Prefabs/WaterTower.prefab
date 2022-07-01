@@ -117,19 +117,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621d57cfc89cce84fb76dd0e39570ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costRessourceA: 10
-  costRessourceB: 20
-  _maxHP: 10000
+  costRessourceA: 12
+  costRessourceB: 10
+  _maxHP: 10
   _detectionRange: 5
   _buildingTime: 0
   _upgradeTime: 0
-  _woodBuildingCost: 0
-  _stoneBuildingCost: 0
-  m_bulletSize: 0.2
-  m_FireRate: 2
-  m_damageModifier: 0
-  m_modifierTime: 0
-  m_bulletSpeed: 0.2
+  _woodBuildingCost: 24
+  _stoneBuildingCost: 20
+  m_bulletSize: 0.5
+  m_FireRate: 1
+  m_damageModifier: 2
+  m_modifierTime: 5
+  m_bulletSpeed: 3
   _bulletPrefab: {fileID: 3363477944066730690, guid: 72631c86a6c1a6d45879f60f0f642b53,
     type: 3}
   m_enemiesInAttackRange: []
