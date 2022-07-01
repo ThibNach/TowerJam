@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Wave Values")]
     [SerializeField]
-    private float _breakTimeBetweenWaves;
+    public float _breakTimeBetweenWaves;
     [SerializeField]
     private float _waveModifier;
     public float m_enemyHPAddByWave;
@@ -146,8 +146,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public  int m_waveNumber;
     private float _waveTimer;
-    private float _breakPhaseTimer;
-    private bool _isInBreakPhase;
+    public float _breakPhaseTimer;
+    public bool _isInBreakPhase;
 
     #endregion
 }

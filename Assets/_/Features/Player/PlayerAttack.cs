@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     #region Exposed
 
     public LayerMask m_layer;
+    public Animator animator;
 
     #endregion
 

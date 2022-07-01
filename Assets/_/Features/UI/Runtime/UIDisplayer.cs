@@ -24,6 +24,8 @@ public class UIDisplayer : MonoBehaviour
     private Image _playerLifeBar;
     [SerializeField]
     private Image _baseLifeBar;
+    [SerializeField]
+    private TextMesh _breakTimer;
 
     #endregion
 
@@ -44,6 +46,12 @@ public class UIDisplayer : MonoBehaviour
         _nbPlayerLife.text = _playerValues._currentLifes.ToString();
         _nbStone.text = _ressources.valueRessourceA.ToString();
         _nbWood.text = _ressources.valueRessourceB.ToString();
+        if (_gameManager._isInBreakPhase)
+        {
+            _breakTimer.gameObject.SetActive(true);
+            _breakTimer.text = (_gameManager._breakTimeBetweenWaves - _gameManager._breakPhaseTimer).ToString();
+        }
+        else _breakTimer.gameObject.SetActive(false);
 
         _playerLifeBar.fillAmount = _playerValues._currentHP / _playerValues._startHP;
         _baseLifeBar.fillAmount = _baseValues._currentHP / _baseValues._pvAtStart;
