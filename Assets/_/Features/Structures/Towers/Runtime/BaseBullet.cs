@@ -8,8 +8,10 @@ public abstract class BaseBullet : MonoBehaviour
 
     protected virtual void Start()
     {
-        _modifierArea = GetComponent<SphereCollider>();
+        _modifierArea = gameObject.AddComponent<SphereCollider>();        
+        _modifierArea.center = Vector3.zero;
         _modifierArea.radius = _tower.m_bulletSize;
+        _modifierArea.isTrigger = true;
     }
     protected virtual void Update()
     {
