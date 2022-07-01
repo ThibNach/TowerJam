@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float m_speedAtStart;
     public Animator _animator;
 
+    public GameObject graphic;
+
     private void Awake()
     {
         m_speedAtStart = speed;
@@ -35,8 +37,30 @@ public class PlayerController : MonoBehaviour
         Vector3 moveHorizontal = transform.right * axisHorizontal;
         Vector3 moveVertical = transform.forward * axisVertical;
         Vector3 velocity = (moveHorizontal + moveVertical).normalized * speed;
-
+        
         transform.Translate(velocity * Time.deltaTime);
+
+        if(axisHorizontal == 1)
+        {
+            graphic.transform.rotation = Quaternion.Euler(0,90, 0);
+        }
+
+        if(axisHorizontal == -1)
+        {
+            graphic.transform.rotation = Quaternion.Euler(0, -90, 0);
+        }
+
+        if(axisVertical == 1)
+        {
+            graphic.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        if(axisVertical == -1)
+        {
+            graphic.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
+        
     }
 
     protected void ClampPositionInArea()
