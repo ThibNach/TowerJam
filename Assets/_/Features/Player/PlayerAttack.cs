@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     #region Exposed
 
     public LayerMask m_layer;
-    public Animator animator;
+    public Animator _animator;
 
     #endregion
 
@@ -69,6 +69,7 @@ public class PlayerAttack : MonoBehaviour
             _attackDirection = (hit.point - transform.position);
 
         }
+        StartCoroutine(AnimAttak());
         playerGraphic.transform.LookAt(new Vector3(_attackDirection.x, transform.position.y, _attackDirection.z));
         if (_enemyInAttackRange.Count > 0)
         {
@@ -83,6 +84,13 @@ public class PlayerAttack : MonoBehaviour
 
 
     #region Utils
+
+    private IEnumerator AnimAttak()
+    {
+        _animator.SetBool("Attack", true);
+        yield return new WaitForSeconds(1);
+        _animator.SetBool("Attack", false);
+    }
 
     private void ManageAttackList()
     {
