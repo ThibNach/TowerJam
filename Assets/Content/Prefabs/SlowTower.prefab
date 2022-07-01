@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costRessourceA: 10
   costRessourceB: 12
-  _maxHP: 10
+  _maxHP: 20
   _detectionRange: 3
   _buildingTime: 0
   _upgradeTime: 0
