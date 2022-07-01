@@ -25,7 +25,7 @@ public class UIDisplayer : MonoBehaviour
     [SerializeField]
     private Image _baseLifeBar;
     [SerializeField]
-    private TextMesh _breakTimer;
+    private TextMeshProUGUI _breakTimer;
 
     #endregion
 
