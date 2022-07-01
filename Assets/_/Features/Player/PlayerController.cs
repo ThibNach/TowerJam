@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         var axisHorizontal = Input.GetAxisRaw("Horizontal");
         var axisVertical = Input.GetAxisRaw("Vertical");
         _animator.SetFloat("xMov", Input.GetAxisRaw("Horizontal"));
-        _animator.SetFloat("yMov", Input.GetAxisRaw("Vertical"));
+        _animator.SetFloat("Zmov", Input.GetAxisRaw("Vertical"));
         
         Vector3 moveHorizontal = transform.right * axisHorizontal;
         Vector3 moveVertical = transform.forward * axisVertical;
