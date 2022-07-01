@@ -40,7 +40,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         InitAggroSphere();
         _damageModifier = 1;
-        m_speedAtStart = _enemySpeed;       
+        m_speedAtStart = _enemySpeed;
     }
     private void Start()
     {
@@ -60,11 +60,11 @@ public class EnemyBehavior : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.GetComponent<PlayerValues>() && !other.isTrigger) ||( other.GetComponent<BaseTower>() && !other.isTrigger)) _aggroList.Add(other.gameObject.transform);
+        if ((other.GetComponent<PlayerValues>() && !other.isTrigger) || (other.GetComponent<BaseTower>() && !other.isTrigger) || (other.GetComponent<BaseBehav>() && !other.isTrigger)) _aggroList.Add(other.gameObject.transform);
     }
     private void OnTriggerExit(Collider other)
     {
-        if ((other.GetComponent<PlayerValues>() && !other.isTrigger) || (other.GetComponent<BaseTower>() && !other.isTrigger)) _aggroList.Remove(other.gameObject.transform);
+        if ((other.GetComponent<PlayerValues>() && !other.isTrigger) || (other.GetComponent<BaseTower>() && !other.isTrigger) || (other.GetComponent<BaseBehav>() && !other.isTrigger)) _aggroList.Remove(other.gameObject.transform);
     }
 
     #endregion
@@ -87,7 +87,20 @@ public class EnemyBehavior : MonoBehaviour
                 _isAttacking = true;
                 EnemyMakeDamageToPlayer(_hit.collider.gameObject.GetComponent<PlayerValues>());
             }
-            else _isAttacking = false;
+            else if (_hit.collider.gameObject.GetComponent<BaseBehav>() && !_hit.collider.isTrigger)
+            {
+                _isAttacking = true;
+                EnemyMakeDamageToBase(_hit.collider.gameObject.GetComponent<BaseBehav>());
+            }
+            _isAttacking = false;
+        }
+    }
+    private void EnemyMakeDamageToBase(BaseBehav target)
+    {
+        if (_timerAttackCoolDown > _attackCoolDown)
+        {
+            target.BaseTakeDamage(_damagesToBase);
+            _timerAttackCoolDown = 0;
         }
     }
     private void EnemyMakeDamageToPlayer(PlayerValues target)

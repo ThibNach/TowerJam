@@ -316,7 +316,7 @@ MonoBehaviour:
   _enemySpeed: 5
   _damagesToPlayer: 5
   _damagesToTower: 5
-  _damagesToBase: 0
+  _damagesToBase: 5
   _attackCoolDown: 2
   _attackRange: 1.5
   _aggroRadius: 5

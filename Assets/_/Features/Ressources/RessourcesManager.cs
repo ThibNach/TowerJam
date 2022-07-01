@@ -8,8 +8,8 @@ public class RessourcesManager : MonoBehaviour
     protected RessourceData ressourceA;
     [SerializeField]
     protected RessourceData ressourceB;
-    protected float valueRessourceA;
-    protected float valueRessourceB;
+    public float valueRessourceA;
+    public float valueRessourceB;
 
     public static RessourcesManager Instance;
 

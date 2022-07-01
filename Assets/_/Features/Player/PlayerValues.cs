@@ -8,10 +8,11 @@ public class PlayerValues : MonoBehaviour
 
     [Header("Player Values")]
     [SerializeField]
-    private float _startHP;
+    public float _startHP;
     public float m_DamageToEnemy;
     public float m_attackRange;
     public float m_attackCoolDown;
+    public int m_nbLifes;
 
     #endregion
 
@@ -21,6 +22,7 @@ public class PlayerValues : MonoBehaviour
     private void Awake()
     {
         _currentHP = _startHP;
+        _currentLifes = m_nbLifes;
     }
 
     #endregion
@@ -35,7 +37,8 @@ public class PlayerValues : MonoBehaviour
 
     #region Private
 
-    private float _currentHP;
+    public float _currentHP;
+    public int _currentLifes;
 
     #endregion
 }
