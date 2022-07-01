@@ -31,16 +31,27 @@ public class PlayerCollect : MonoBehaviour
 
     protected void PickRessource()
     {
-        RaycastHit hit;
+        RaycastHit hit = default(RaycastHit);
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] raycastHits = Physics.RaycastAll(ray, Mathf.Infinity);
 
-        if(Physics.Raycast(ray, out hit, Mathf.Infinity))
+        foreach (var currentHit in raycastHits)
+        {
+            if(currentHit.collider.CompareTag("Gatherable"))
+            {
+                hit = currentHit;
+                break;
+            }
+        }
+
+        if(hit.collider)
         {
             Collider collider = hit.collider;
 
             if(collider && collider.CompareTag("Gatherable"))
             {
-                if(Input.GetMouseButtonDown(0) && !enableTimeout)
+                bool v = Input.GetMouseButtonDown(0);
+                if(v && !enableTimeout)
                 {
                     enableTimeout = true;
                     if(Vector3.Distance(transform.position, collider.transform.position) < distanceGather)
